@@ -1,0 +1,47 @@
+.search-bar {
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	max-width: 100%;
+	height: 5rem;
+	padding: 0.5rem 1rem;
+	margin: 0 auto;
+
+	&-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		padding: 0.25rem 0.5rem;
+	}
+}
+
+.app-brand-name {
+	flex-basis: 18%;
+
+	& a {
+		text-decoration: none;
+	}
+}
+
+.brand-name {
+	width: 100%;
+	font-size: $font-size-xxl;
+	font-weight: $font-weight-bold;
+	text-align: center;
+	margin: 0 auto;
+
+	& span:first-of-type {
+		color: $firebrick;
+	}
+
+	& span:last-of-type {
+		color: $black;
+	}
+}
+
+.search-form-section {
+	flex-basis: 82%;
+}

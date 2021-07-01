@@ -1,6 +1,6 @@
 .pop-up-message {
 	&-bar {
-		justify-content: space-between;
+		justify-content: space-around;
 		align-items: center;
 		width: 100%;
 		max-width: 100%;
@@ -27,7 +27,7 @@
 }
 
 .text-section {
-	flex-basis: 71%;
+	flex-basis: 64%;
 	align-items: baseline;
 	& p {
 		flex-grow: 1;
@@ -38,9 +38,10 @@
 }
 
 .add-to-homepage-section {
-	flex-basis: 24%;
+	flex-basis: 32%;
+	padding: 0 1rem;
 	& div {
-		flex-basis: 50%;
+		flex-basis: 40%;
 		width: 100%;
 		text-align: center;
 	}

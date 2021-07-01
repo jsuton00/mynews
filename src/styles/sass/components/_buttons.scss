@@ -12,5 +12,13 @@
 .reject-btn {
 	color: $primary-btn-text-colour;
 	font-weight: $font-weight-medium;
+	border-radius: 0.625rem;
 	padding: 0.45rem 1.125rem;
+}
+
+.search-btn {
+	background-color: $primary-btn-bg-colour;
+	border-radius: 0.625rem;
+	color: $primary-btn-text-colour;
+	padding: 0.4rem 1.125rem;
 }

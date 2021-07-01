@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PopUpMessageBar from './PopUpMessageBar';
+import SearchBar from './SearchBar';
 
 const Header = () => {
 	const [openedPopUp, setOpenedPopUp] = useState(true);
@@ -12,6 +13,7 @@ const Header = () => {
 			) : (
 				<></>
 			)}
+			<SearchBar />
 		</header>
 	);
 };
