@@ -1,0 +1,16 @@
+.add-to-homepage-btn {
+	border: 0.0625rem solid $secondary-btn-bg-colour;
+	border-radius: 0.625rem;
+	background-color: $secondary-btn-bg-colour;
+	color: $secondary-btn-text-colour;
+	font-weight: $font-weight-medium;
+	text-transform: uppercase;
+	padding: 0.45rem 1.125rem;
+	margin: 0 auto;
+}
+
+.reject-btn {
+	color: $primary-btn-text-colour;
+	font-weight: $font-weight-medium;
+	padding: 0.45rem 1.125rem;
+}
