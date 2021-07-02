@@ -8,7 +8,7 @@ import {
 	TechnologyIcon,
 } from '../utils/iconsImport';
 
-export const NEWS_CATEGORIES = [
+export const NEWS_CATEGORIES_LINKS = [
 	{ category: 'home', slug: '', icon: <HomeIcon /> },
 	{ category: 'general', slug: 'general', icon: <GeneralNewsIcon /> },
 	{ category: 'business', slug: 'business', icon: <BriefcaseIcon /> },
@@ -16,4 +16,13 @@ export const NEWS_CATEGORIES = [
 	{ category: 'science', slug: 'science', icon: <ScienceIcon /> },
 	{ category: 'sports', slug: 'sports', icon: <SportsIcon /> },
 	{ category: 'technology', slug: 'technology', icon: <TechnologyIcon /> },
+];
+
+export const NEWS_CATEGORIES = [
+	'general',
+	'business',
+	'health',
+	'science',
+	'sports',
+	'technology',
 ];

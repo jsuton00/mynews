@@ -1,0 +1,25 @@
+.news-page {
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	margin: 0 auto;
+
+	&-content {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.5rem;
+		grid-auto-rows: minmax(6.25rem, auto);
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		padding: 0.5rem 1rem;
+		margin: 0 auto;
+	}
+}
+
+.latest-news {
+	grid-column: 3;
+	grid-row: 1/3;
+}
