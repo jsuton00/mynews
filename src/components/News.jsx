@@ -5,7 +5,7 @@ import LatestNews from './LatestNews';
 import NewsCard from './NewsCard';
 
 const News = (props) => {
-	const { news, getNews, category } = props;
+	const { news, getNews, category, latestNews } = props;
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -36,7 +36,7 @@ const News = (props) => {
 					);
 				})}
 			<div className="latest-news-section">
-				<LatestNews />
+				<LatestNews latestNews={latestNews} />
 			</div>
 		</>
 	);
@@ -44,6 +44,11 @@ const News = (props) => {
 
 const mapStateToProps = (state) => ({
 	news: state.news.newsByCategory,
+	latestNews:
+		state.news.newsByCategory.length > 0 &&
+		state.news.newsByCategory.sort(
+			(a, b) => b.published_date - a.published_date,
+		),
 });
 
 const mapDispatchToProps = (dispatch) => ({

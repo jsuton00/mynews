@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import LatestNews from './LatestNews';
 
 const AllNews = (props) => {
-	const { allNews, getAllNews } = props;
+	const { allNews, getAllNews, latestNews } = props;
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -33,7 +33,7 @@ const AllNews = (props) => {
 					);
 				})}
 			<div className="latest-news-section">
-				<LatestNews />
+				<LatestNews latestNews={latestNews} />
 			</div>
 		</>
 	);
@@ -41,6 +41,9 @@ const AllNews = (props) => {
 
 const mapStateToProps = (state) => ({
 	allNews: state.news.allNews,
+	latestNews:
+		state.news.allNews.length > 0 &&
+		state.news.allNews.sort((a, b) => b.published_date - a.published_date),
 });
 
 const mapDispatchToProps = (dispatch) => ({

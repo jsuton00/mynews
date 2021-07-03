@@ -3,7 +3,10 @@ import {
 	FaBriefcase as BriefcaseIcon,
 	FaDesktop as TechnologyIcon,
 } from 'react-icons/fa';
-import { MdHome as HomeIcon } from 'react-icons/md';
+import {
+	MdHome as HomeIcon,
+	MdKeyboardArrowRight as RightArrowIcon,
+} from 'react-icons/md';
 import { IoNewspaperOutline as GeneralNewsIcon } from 'react-icons/io5';
 import { IoMdFootball as SportsIcon } from 'react-icons/io';
 import { GiHealthNormal as HealthIcon } from 'react-icons/gi';
@@ -18,4 +21,5 @@ export {
 	ScienceIcon,
 	SportsIcon,
 	TechnologyIcon,
+	RightArrowIcon,
 };
