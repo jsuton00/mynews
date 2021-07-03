@@ -12,16 +12,18 @@ export function* fetchAllNewsSaga(action) {
 	}
 }
 
-export function* fetchNewsByCategory(action) {
+export function* fetchNewsByCategorySaga(action) {
 	try {
 		yield put(actions.loadingNews());
 		let response;
 
-		if (action.category) {
+		if (action.category === 'home') {
+			response = yield call(api.fetchAllNews);
+			yield put(actions.fetchAllNewsSuccess(response));
+		} else {
 			response = yield call(api.fetchNewsByCategory, action.category);
+			yield put(actions.fetchNewsByCategorySuccess(response.data.results));
 		}
-
-		yield put(actions.fetchNewsByCategorySuccess(response.data.articles));
 	} catch (err) {
 		yield put(actions.fetchNewsByCategoryFail());
 	}

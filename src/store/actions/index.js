@@ -5,5 +5,6 @@ export {
 	fetchNewsByCategory,
 	fetchNewsByCategoryFail,
 	fetchNewsByCategorySuccess,
+	selectNewsCategory,
 	loadingNews,
 } from './news';

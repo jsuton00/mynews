@@ -1,28 +1,25 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../store/actions/index';
-import LatestNews from './LatestNews';
 import NewsCard from './NewsCard';
+import * as actions from '../store/actions/index';
+import { connect } from 'react-redux';
+import LatestNews from './LatestNews';
 
-const News = (props) => {
-	const { news, getNews, category } = props;
+const AllNews = (props) => {
+	const { allNews, getAllNews } = props;
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			if (category) {
-				return getNews(category);
-			}
-		}, 100);
+			getAllNews();
+		}, 1000);
 
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [category, getNews]);
-
+	}, [getAllNews]);
 	return (
 		<>
-			{news.length > 0 &&
-				news.map((news, i) => {
+			{allNews.length > 0 &&
+				allNews.map((news, i) => {
 					return (
 						<NewsCard
 							key={i}
@@ -43,11 +40,11 @@ const News = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-	news: state.news.newsByCategory,
+	allNews: state.news.allNews,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	getNews: (category) => dispatch(actions.fetchNewsByCategory(category)),
+	getAllNews: () => dispatch(actions.fetchAllNews()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default connect(mapStateToProps, mapDispatchToProps)(AllNews);

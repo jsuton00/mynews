@@ -12,12 +12,15 @@
 		object-fit: cover;
 		-o-object-position: center center;
 		object-position: center center;
+		border-top-left-radius: 0.625rem;
+		border-top-right-radius: 0.625rem;
 	}
 }
 
-.news-source {
+.news-category {
 	font-size: $font-size-md;
 	font-weight: $font-weight-medium;
 	color: $metadata-text-colour;
 	padding: 0.25rem 0;
+	text-transform: capitalize;
 }

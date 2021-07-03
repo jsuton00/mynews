@@ -12,6 +12,11 @@ export const fetchAllNewsFall = () => ({
 	type: actionTypes.FETCH_ALL_NEWS_FAIL,
 });
 
+export const selectNewsCategory = (category) => ({
+	type: actionTypes.SELECT_NEWS_CATEGORY,
+	category,
+});
+
 export const fetchAllNewsSuccess = (allNews) => ({
 	type: actionTypes.FETCH_ALL_NEWS_SUCCESS,
 	allNews,

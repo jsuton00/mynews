@@ -4,6 +4,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
 	allNews: [],
 	newsByCategory: [],
+	category: '',
 	loadingNews: false,
 	errorFetchingAllNews: false,
 	errorFetchingNews: false,
@@ -12,6 +13,21 @@ const initialState = {
 const loadingNews = (state, action) => {
 	return updateObjects(state, {
 		loadingNews: true,
+	});
+};
+
+const selectNewsCategory = (state, action) => {
+	let category = '';
+	if (action.category === '') {
+		category = 'home';
+	} else if (action.category === 'general') {
+		category = 'world';
+	} else {
+		category = action.category;
+	}
+
+	return updateObjects(state, {
+		category: category,
 	});
 };
 
@@ -39,7 +55,7 @@ const fetchNewsByCategoryFail = (state, action) => {
 
 const fetchNewsByCategorySuccess = (state, action) => {
 	return updateObjects(state, {
-		news: action.news,
+		newsByCategory: action.news,
 		loadingNews: false,
 		errorFetchingNews: false,
 	});
@@ -57,6 +73,8 @@ const news = (state = initialState, action) => {
 			return fetchNewsByCategoryFail(state, action);
 		case actionTypes.FETCH_NEWS_BY_CATEGORY_SUCCESS:
 			return fetchNewsByCategorySuccess(state, action);
+		case actionTypes.SELECT_NEWS_CATEGORY:
+			return selectNewsCategory(state, action);
 		default:
 			return state;
 	}

@@ -10,7 +10,6 @@
 		gap: 0.5rem;
 		grid-auto-rows: minmax(6.25rem, auto);
 		justify-content: center;
-		align-items: center;
 		width: 100%;
 		max-width: 100%;
 		height: 100%;
@@ -19,7 +18,7 @@
 	}
 }
 
-.latest-news {
+.latest-news-section {
 	grid-column: 3;
 	grid-row: 1/3;
 }
