@@ -1,8 +1,10 @@
 import React from 'react';
+import { formatDateFromNow } from '../utils/formatDateTime';
 import { RightArrowIcon } from '../utils/iconsImport';
 
 const LatestNews = (props) => {
 	const { latestNews } = props;
+
 	return (
 		<div className="latest-news">
 			<h5 className="latest-news-header row">
@@ -17,7 +19,7 @@ const LatestNews = (props) => {
 						return (
 							<div key={i} className="latest-news-list-item list-item-group">
 								<p className="latest-news-published-date row">
-									{news.published_date}
+									{formatDateFromNow(news.published_date)}
 								</p>
 								<h5 className="latest-news-title">{news.title}</h5>
 							</div>

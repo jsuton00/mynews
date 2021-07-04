@@ -11,7 +11,6 @@ export const fetchNewsByCategory = async (category) => {
 
 export const fetchAllNews = async () => {
 	return await Promise.all([
-		fetchNewsByCategory('home'),
 		fetchNewsByCategory('world'),
 		fetchNewsByCategory('business'),
 		fetchNewsByCategory('health'),

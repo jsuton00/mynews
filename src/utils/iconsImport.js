@@ -2,6 +2,7 @@ import {
 	FaSearch as SearchIcon,
 	FaBriefcase as BriefcaseIcon,
 	FaDesktop as TechnologyIcon,
+	FaBookmark as BookmarkIcon,
 } from 'react-icons/fa';
 import {
 	MdHome as HomeIcon,
@@ -22,4 +23,5 @@ export {
 	SportsIcon,
 	TechnologyIcon,
 	RightArrowIcon,
+	BookmarkIcon,
 };

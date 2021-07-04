@@ -22,3 +22,17 @@
 	color: $primary-btn-text-colour;
 	padding: 0.4rem 1.125rem;
 }
+
+.add-to-bookmark-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	&-icon {
+		font-size: $font-size-lg;
+		color: $steelblue;
+		&:hover {
+			color: $firebrick;
+		}
+	}
+}

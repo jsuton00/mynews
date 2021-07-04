@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import News from '../components/News';
+import NewsPageHeader from '../components/layouts/NewsPageHeader';
+import News from '../containers/News';
 import * as actions from '../store/actions/index';
 
 const NewsCategoryPage = (props) => {
@@ -22,6 +23,7 @@ const NewsCategoryPage = (props) => {
 	}, [category, dispatch]);
 	return (
 		<div className="news-page news-category-page container-fluid">
+			<NewsPageHeader newsCategory={category} />
 			<div className="news-page-content container">
 				<News category={newsCategory} />
 			</div>

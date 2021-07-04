@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/index';
-import LatestNews from './LatestNews';
-import NewsCard from './NewsCard';
+import LatestNews from '../components/LatestNews';
+import NewsCard from '../components/NewsCard';
 
 const News = (props) => {
-	const { news, getNews, category, latestNews } = props;
+	const { news, getNews, category, latestNews, selectNews } = props;
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -32,6 +32,7 @@ const News = (props) => {
 							newsSubCategory={news.subsection}
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
+							selectNews={() => selectNews(news)}
 						/>
 					);
 				})}
@@ -43,16 +44,17 @@ const News = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-	news: state.news.newsByCategory,
+	news: state.news.filteredNewsByCategory,
 	latestNews:
-		state.news.newsByCategory.length > 0 &&
-		state.news.newsByCategory.sort(
-			(a, b) => b.published_date - a.published_date,
+		state.news.filteredNewsByCategory.length > 0 &&
+		state.news.filteredNewsByCategory.sort(
+			(a, b) => new Date(b.published_date) - new Date(a.published_date),
 		),
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	getNews: (category) => dispatch(actions.fetchNewsByCategory(category)),
+	selectNews: (publishedDate) => dispatch(actions.selectNews(publishedDate)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(News);

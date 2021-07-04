@@ -323,6 +323,19 @@ a:hover {
   padding: 0.4rem 1.125rem;
 }
 
+.add-to-bookmark-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.add-to-bookmark-btn-icon {
+  font-size: 1.25rem;
+  color: #3c84c5;
+}
+.add-to-bookmark-btn-icon:hover {
+  color: #bb1e1e;
+}
+
 .news-card {
   width: 100%;
   height: 100%;
@@ -442,6 +455,12 @@ a:hover {
   height: 100%;
   margin: 0 auto;
 }
+.news-page-header {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.5rem 1rem;
+  margin: 0 auto;
+}
 .news-page-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -453,6 +472,19 @@ a:hover {
   height: 100%;
   padding: 0.5rem 1rem;
   margin: 0 auto;
+}
+.news-page-title {
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.5rem 0;
+  margin: 0 auto;
+  text-transform: capitalize;
+}
+
+.news-category-section {
+  grid-column: 1/2;
+  grid-row: 1;
 }
 
 .latest-news-section {

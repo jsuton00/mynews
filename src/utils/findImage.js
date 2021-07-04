@@ -1,7 +1,7 @@
 import { blankImage } from '../assets';
 
 export const findImage = (arr) => {
-	let imgArray = [...arr];
+	let imgArray = arr ? [...arr] : [];
 	let image = '';
 
 	if (imgArray.length > 0) {
