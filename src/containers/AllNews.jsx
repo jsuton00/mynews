@@ -1,27 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import NewsCard from '../components/NewsCard';
 import * as actions from '../store/actions/index';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LatestNews from '../components/LatestNews';
 import { groupBy } from '../utils/arrayUtils';
 
 const AllNews = (props) => {
-	const { allNews, getAllNews, latestNews, selectNews } = props;
+	const { tabKey, width } = props;
+	const allNews = useSelector((state) => state.news.filteredNews);
+	const selectedNews = useSelector((state) => state.news.selectedNews);
+	const dispatch = useDispatch();
+
+	const latestNews =
+		allNews.length > 0 &&
+		[...allNews].sort((a, b) => b.published_date - a.published_date);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			getAllNews();
-		}, 1000);
+			dispatch(actions.fetchAllNews());
+		});
 
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [getAllNews]);
+	}, [dispatch]);
 
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			if (selectedNews) {
+				dispatch(actions.addToBookmark(selectedNews));
+			}
+		}, 100);
+
+		return () => {
+			clearTimeout(timer);
+		};
+	}, [dispatch, selectedNews]);
+
+	const groupArray = groupBy(allNews, 'section');
 	return (
 		<>
-			{allNews.world?.length > 0 &&
-				allNews.world.map((news, i) => {
+			{groupArray.world?.length > 0 &&
+				groupArray.world.map((news, i) => {
 					return (
 						<NewsCard
 							key={i}
@@ -31,12 +51,12 @@ const AllNews = (props) => {
 							newsSubCategory={news.subsection}
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
-							selectNews={() => selectNews(news.title)}
+							selectNews={() => dispatch(actions.selectNews(news.title))}
 						/>
 					);
 				})}
-			{allNews.business?.length > 0 &&
-				allNews.business.map((news, i) => {
+			{groupArray.business?.length > 0 &&
+				groupArray.business.map((news, i) => {
 					return (
 						<NewsCard
 							key={i}
@@ -46,12 +66,12 @@ const AllNews = (props) => {
 							newsSubCategory={news.subsection}
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
-							selectNews={() => selectNews(news.title)}
+							selectNews={() => dispatch(actions.selectNews(news.title))}
 						/>
 					);
 				})}
-			{allNews.health?.length > 0 &&
-				allNews.health.map((news, i) => {
+			{groupArray.health?.length > 0 &&
+				groupArray.health.map((news, i) => {
 					return (
 						<NewsCard
 							key={i}
@@ -61,12 +81,12 @@ const AllNews = (props) => {
 							newsSubCategory={news.subsection}
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
-							selectNews={() => selectNews(news.title)}
+							selectNews={() => dispatch(actions.selectNews(news.title))}
 						/>
 					);
 				})}
-			{allNews.science?.length > 0 &&
-				allNews.science.map((news, i) => {
+			{groupArray.science?.length > 0 &&
+				groupArray.science.map((news, i) => {
 					return (
 						<NewsCard
 							key={i}
@@ -76,12 +96,12 @@ const AllNews = (props) => {
 							newsSubCategory={news.subsection}
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
-							selectNews={() => selectNews(news.title)}
+							selectNews={() => dispatch(actions.selectNews(news.title))}
 						/>
 					);
 				})}
-			{allNews.sports?.length > 0 &&
-				allNews.sports.map((news, i) => {
+			{groupArray.sports?.length > 0 &&
+				groupArray.sports.map((news, i) => {
 					return (
 						<NewsCard
 							key={i}
@@ -91,12 +111,12 @@ const AllNews = (props) => {
 							newsSubCategory={news.subsection}
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
-							selectNews={() => selectNews(news.title)}
+							selectNews={() => dispatch(actions.selectNews(news.title))}
 						/>
 					);
 				})}
-			{allNews.technology?.length > 0 &&
-				allNews.technology.map((news, i) => {
+			{groupArray.technology?.length > 0 &&
+				groupArray.technology.map((news, i) => {
 					return (
 						<NewsCard
 							key={i}
@@ -106,10 +126,11 @@ const AllNews = (props) => {
 							newsSubCategory={news.subsection}
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
-							selectNews={() => selectNews(news.title)}
+							selectNews={() => dispatch(actions.selectNews(news.title))}
 						/>
 					);
 				})}
+
 			<div className="latest-news-section">
 				<LatestNews latestNews={latestNews} />
 			</div>
@@ -117,20 +138,4 @@ const AllNews = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	allNews:
-		state.news.filteredNews.length > 0 &&
-		groupBy(state.news.filteredNews, 'section'),
-	latestNews:
-		state.news.filteredNews.length > 0 &&
-		state.news.filteredNews.sort(
-			(a, b) => new Date(b.published_date) - new Date(a.published_date),
-		),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-	getAllNews: () => dispatch(actions.fetchAllNews()),
-	selectNews: (newsTitle) => dispatch(actions.selectNews(newsTitle)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AllNews);
+export default AllNews;

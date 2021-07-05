@@ -13,19 +13,21 @@ const LatestNews = (props) => {
 				</span>
 				Latest News
 			</h5>
-			<div className="latest-news-list list-group">
-				{latestNews.length > 0 &&
-					latestNews.map((news, i) => {
-						return (
-							<div key={i} className="latest-news-list-item list-item-group">
-								<p className="latest-news-published-date row">
-									{formatDateFromNow(news.published_date)}
-								</p>
-								<h5 className="latest-news-title">{news.title}</h5>
-							</div>
-						);
-					})}
-			</div>
+			{latestNews && (
+				<div className="latest-news-list list-group">
+					{latestNews.length > 0 &&
+						latestNews.map((news, i) => {
+							return (
+								<div key={i} className="latest-news-list-item list-item-group">
+									<p className="latest-news-published-date row">
+										{formatDateFromNow(news.published_date)}
+									</p>
+									<h5 className="latest-news-title">{news.title}</h5>
+								</div>
+							);
+						})}
+				</div>
+			)}
 			<div className="latest-news-footer row">
 				<p className="see-all-news">
 					See All News <RightArrowIcon />

@@ -1,5 +1,6 @@
 export const groupBy = (array, key) => {
-	return array.reduce((result, currentValue) => {
+	let oldArray = [...array];
+	return oldArray.reduce((result, currentValue) => {
 		(result[currentValue[key]] = result[currentValue[key]] || []).push(
 			currentValue,
 		);

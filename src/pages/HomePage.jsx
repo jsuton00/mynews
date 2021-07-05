@@ -1,13 +1,30 @@
 import React from 'react';
 import AllNews from '../containers/AllNews';
 import NewsPageHeader from '../components/layouts/NewsPageHeader';
+import { useViewportContext } from '../hooks/useViewport';
+import NavTabs from '../components/mobile/NavTabs';
 
 const HomePage = () => {
+	const [width] = useViewportContext();
 	return (
 		<div className="news-page home-page container-fluid">
-			<NewsPageHeader />
-			<div className="news-page-content container">
-				<AllNews />
+			<div
+				className={`news-page-${
+					width <= 829 ? 'mobile' : 'desktop'
+				}-display container-fluid`}
+			>
+				{width <= 829 ? (
+					<div className="news-page-content container">
+						<NavTabs />
+					</div>
+				) : (
+					<>
+						<NewsPageHeader />
+						<div className="news-page-content container">
+							<AllNews />
+						</div>
+					</>
+				)}
 			</div>
 		</div>
 	);

@@ -1,12 +1,14 @@
-import { removeDuplicates, searchArray } from '../../utils/arrayUtils';
+import { searchArray } from '../../utils/arrayUtils';
 import { updateObjects } from '../../utils/reduxUtils';
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
 	allNews: [],
 	filteredNews: [],
+	latestAllNews: [],
 	newsByCategory: [],
 	filteredNewsByCategory: [],
+	latestNewsByCategory: [],
 	category: '',
 	searchTerm: '',
 	selectedNews: '',
@@ -22,21 +24,6 @@ const loadingNews = (state, action) => {
 	});
 };
 
-const selectNewsCategory = (state, action) => {
-	let category = '';
-	if (action.category === '') {
-		category = 'home';
-	} else if (action.category === 'general') {
-		category = 'world';
-	} else {
-		category = action.category;
-	}
-
-	return updateObjects(state, {
-		category: category,
-	});
-};
-
 const fetchAllNewsFall = (state, action) => {
 	return updateObjects(state, {
 		loadingNews: false,
@@ -46,7 +33,10 @@ const fetchAllNewsFall = (state, action) => {
 
 const fetchAllNewsSuccess = (state, action) => {
 	let allNews = action.allNews.length > 0 && action.allNews.flat(1);
-	allNews = Array.from(new Set(allNews.map(JSON.stringify))).map(JSON.parse);
+
+	allNews = [
+		...Array.from(new Set(allNews.map(JSON.stringify))).map(JSON.parse),
+	];
 
 	return updateObjects(state, {
 		allNews: allNews,
@@ -69,6 +59,21 @@ const fetchNewsByCategorySuccess = (state, action) => {
 		filteredNewsByCategory: action.news,
 		loadingNews: false,
 		errorFetchingNews: false,
+	});
+};
+
+const selectNewsCategory = (state, action) => {
+	let category = '';
+	if (action.category === '') {
+		category = 'home';
+	} else if (action.category === 'general') {
+		category = 'world';
+	} else {
+		category = action.category;
+	}
+
+	return updateObjects(state, {
+		category: category,
 	});
 };
 

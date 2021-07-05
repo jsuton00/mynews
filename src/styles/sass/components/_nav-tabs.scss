@@ -1,0 +1,31 @@
+.nav {
+	&-tabs {
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		max-width: 100%;
+		height: 3.5rem;
+		& .nav-item {
+			border-radius: 1.5rem;
+			background-color: transparent !important;
+			color: $black !important;
+			text-transform: capitalize;
+			margin: 0 auto;
+			&:hover,
+			&:focus,
+			&:active {
+				background-color: $mistyrose !important;
+				color: $firebrick !important;
+			}
+		}
+	}
+	&-tab {
+		& .latest-news {
+			grid-auto-rows: auto;
+
+			&-list {
+				height: 100%;
+			}
+		}
+	}
+}

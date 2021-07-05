@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 import { useLocation } from 'react-router';
 
 const SearchForm = (props) => {
-	const { searchTerm, setSearchTerm, searchAllNews, searchNews } = props;
+	const {
+		searchTerm,
+		setSearchTerm,
+		searchAllNews,
+		searchNews,
+		closeForm,
+		isOpen,
+	} = props;
 
 	let location = useLocation();
 
@@ -22,12 +29,18 @@ const SearchForm = (props) => {
 		if (searchTerm === inputRef.current.value) {
 			if (e.key === 'Enter') {
 				if (location.pathname !== '/') {
-					return searchNews(searchTerm);
+					searchNews(searchTerm);
 				} else {
-					return searchAllNews(searchTerm);
+					searchAllNews(searchTerm);
 				}
 			}
 		}
+
+		if (isOpen === true) {
+			closeForm();
+		}
+
+		return;
 	};
 
 	return (

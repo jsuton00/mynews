@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { findImage } from '../utils/findImage';
 import { BookmarkIcon } from '../utils/iconsImport';
 
@@ -14,10 +14,11 @@ const NewsCard = (props) => {
 	} = props;
 
 	const newsCardRef = useRef();
-	const [bookmarked, setBookmarked] = useState(false);
 
-	const handleSelect = (e) => {
-		return selectNews(e.target.value);
+	const handleClick = (e) => {
+		if (e.target.value === newsCardRef.current.value) {
+			return selectNews(e.target.value);
+		}
 	};
 
 	return (
@@ -28,16 +29,21 @@ const NewsCard = (props) => {
 				className="news-card-img card-img-top"
 			/>
 			<div className="news-card-body card-body">
-				<div
+				<button
 					ref={newsCardRef}
+					type="button"
 					className="btn add-to-bookmark-btn"
-					onClick={handleSelect}
+					onClick={handleClick}
 					value={newsTitle}
 				>
-					<span className="add-to-bookmark-btn-icon">
+					<span
+						ref={newsCardRef}
+						className="add-to-bookmark-btn-icon"
+						value={newsTitle}
+					>
 						<BookmarkIcon />
 					</span>
-				</div>
+				</button>
 				<p className="news-category card-text">{`${newsCategory} ${
 					newsSubCategory ? `- ${newsSubCategory}` : ''
 				}`}</p>

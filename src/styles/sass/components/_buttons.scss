@@ -1,3 +1,6 @@
+.btn {
+	display: block;
+}
 .add-to-homepage-btn {
 	border: 0.0625rem solid $secondary-btn-bg-colour;
 	border-radius: 0.625rem;
@@ -35,4 +38,17 @@
 			color: $firebrick;
 		}
 	}
+}
+
+.bookmarked {
+	& span {
+		color: $firebrick;
+	}
+}
+
+.toggle-button {
+	font-size: $font-size-lg;
+	font-weight: $font-weight-bold;
+	padding: 0.125rem 0.5rem;
+	margin-left: auto;
 }

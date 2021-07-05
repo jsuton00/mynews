@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PopUpMessageBar from './PopUpMessageBar';
 import SearchBar from './SearchBar';
 
-const Header = () => {
+const Header = (props) => {
 	const [openedPopUp, setOpenedPopUp] = useState(true);
 
 	const closePopUpMessageBar = () => setOpenedPopUp(false);
@@ -13,7 +13,7 @@ const Header = () => {
 			) : (
 				<></>
 			)}
-			<SearchBar />
+			<SearchBar {...props} />
 		</header>
 	);
 };

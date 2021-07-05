@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../store/actions/index';
-import LatestNews from '../components/LatestNews';
-import NewsCard from '../components/NewsCard';
+import * as actions from '../../store/actions/index';
+import LatestNews from '../LatestNews';
+import NewsCard from '../NewsCard';
 
-const News = (props) => {
+const MobileNews = (props) => {
 	const { category, tabKey } = props;
 
 	const news = useSelector((state) => state.news.filteredNewsByCategory);
@@ -14,6 +14,7 @@ const News = (props) => {
 	const latestNews =
 		news.length > 0 &&
 		[...news].sort((a, b) => b.published_date - a.published_date);
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			if (category) {
@@ -39,27 +40,31 @@ const News = (props) => {
 
 	return (
 		<>
-			{news.length > 0 &&
-				news.map((news, i) => {
-					return (
-						<NewsCard
-							key={i}
-							newsId={news.published_date}
-							newsTitle={news.title}
-							newsCategory={news.section}
-							newsSubCategory={news.subsection}
-							newsAuthor={news.byline}
-							newsImage={news.multimedia}
-							selectNews={() => dispatch(actions.selectNews(news.title))}
-						/>
-					);
-				})}
-
-			<div className="latest-news-section">
-				<LatestNews latestNews={latestNews} />
-			</div>
+			{tabKey === 'featured' ? (
+				<Fragment>
+					{news.length > 0 &&
+						news.map((news, i) => {
+							return (
+								<NewsCard
+									key={i}
+									newsId={news.published_date}
+									newsTitle={news.title}
+									newsCategory={news.section}
+									newsSubCategory={news.subsection}
+									newsAuthor={news.byline}
+									newsImage={news.multimedia}
+									selectNews={() => dispatch(actions.selectNews(news.title))}
+								/>
+							);
+						})}
+				</Fragment>
+			) : (
+				<div className="latest-news-section">
+					<LatestNews latestNews={latestNews} />
+				</div>
+			)}
 		</>
 	);
 };
 
-export default News;
+export default MobileNews;

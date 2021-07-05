@@ -1,17 +1,17 @@
 import React from 'react';
 import SearchForm from './SearchForm';
-import { Link } from 'react-router-dom';
+import ToggleButton from './ToggleButton';
+import { useViewportContext } from '../hooks/useViewport';
+import BrandLogo from './BrandLogo';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+	const { open } = props;
+	const [width] = useViewportContext();
 	return (
 		<div className="search-bar container row">
 			<div className="search-bar-section app-brand-name">
-				<Link to="/">
-					<h1 className="brand-name">
-						<span>My</span>
-						<span>News</span>
-					</h1>
-				</Link>
+				{open ? <></> : <BrandLogo />}
+				{width <= 992 ? <ToggleButton width={width} {...props} /> : ''}
 			</div>
 			<div className="search-bar-section search-form-section">
 				<SearchForm />
