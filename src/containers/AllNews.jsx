@@ -1,14 +1,14 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import NewsCard from '../components/NewsCard';
 import * as actions from '../store/actions/index';
 import { useDispatch, useSelector } from 'react-redux';
 import LatestNews from '../components/LatestNews';
-import { groupBy } from '../utils/arrayUtils';
+import { compareList, groupBy } from '../utils/arrayUtils';
 
-const AllNews = (props) => {
-	const { tabKey, width } = props;
+const AllNews = () => {
 	const allNews = useSelector((state) => state.news.filteredNews);
 	const selectedNews = useSelector((state) => state.news.selectedNews);
+	const bookmarks = useSelector((state) => state.bookmarks.bookmarks);
 	const dispatch = useDispatch();
 
 	const latestNews =
@@ -52,6 +52,7 @@ const AllNews = (props) => {
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
 							selectNews={() => dispatch(actions.selectNews(news.title))}
+							bookmarkedNews={compareList(bookmarks, news.title)}
 						/>
 					);
 				})}
@@ -67,6 +68,7 @@ const AllNews = (props) => {
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
 							selectNews={() => dispatch(actions.selectNews(news.title))}
+							bookmarkedNews={compareList(bookmarks, news.title)}
 						/>
 					);
 				})}
@@ -82,6 +84,7 @@ const AllNews = (props) => {
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
 							selectNews={() => dispatch(actions.selectNews(news.title))}
+							bookmarkedNews={compareList(bookmarks, news.title)}
 						/>
 					);
 				})}
@@ -97,6 +100,7 @@ const AllNews = (props) => {
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
 							selectNews={() => dispatch(actions.selectNews(news.title))}
+							bookmarkedNews={compareList(bookmarks, news.title)}
 						/>
 					);
 				})}
@@ -112,6 +116,7 @@ const AllNews = (props) => {
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
 							selectNews={() => dispatch(actions.selectNews(news.title))}
+							bookmarkedNews={compareList(bookmarks, news.title)}
 						/>
 					);
 				})}
@@ -127,6 +132,7 @@ const AllNews = (props) => {
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
 							selectNews={() => dispatch(actions.selectNews(news.title))}
+							bookmarkedNews={compareList(bookmarks, news.title)}
 						/>
 					);
 				})}

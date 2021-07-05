@@ -3,8 +3,13 @@ import { formatDateFromNow } from '../utils/formatDateTime';
 import { RightArrowIcon } from '../utils/iconsImport';
 
 const LatestNews = (props) => {
-	const { latestNews } = props;
+	const { latestNews, tabKey, switchTab } = props;
 
+	const handleClick = () => {
+		if (tabKey === 'latest') {
+			return switchTab('featured');
+		}
+	};
 	return (
 		<div className="latest-news">
 			<h5 className="latest-news-header row">
@@ -29,7 +34,7 @@ const LatestNews = (props) => {
 				</div>
 			)}
 			<div className="latest-news-footer row">
-				<p className="see-all-news">
+				<p onClick={handleClick} className="see-all-news" value={tabKey}>
 					See All News <RightArrowIcon />
 				</p>
 			</div>

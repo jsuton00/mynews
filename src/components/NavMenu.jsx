@@ -3,15 +3,8 @@ import { Link } from 'react-router-dom';
 import { NEWS_CATEGORIES_LINKS } from '../constants/newsCategories';
 
 const NavMenu = (props) => {
-	const { isOpen, closeMenu } = props;
+	const { closeMenu } = props;
 
-	const handleClick = () => {
-		if (isOpen === true) {
-			return closeMenu();
-		}
-
-		return;
-	};
 	return (
 		<nav className="nav news-category-nav">
 			{NEWS_CATEGORIES_LINKS.length > 0 &&
@@ -20,7 +13,7 @@ const NavMenu = (props) => {
 						<Link
 							key={index}
 							to={category.slug === '' ? '/' : `/news/${category.slug}`}
-							onClick={handleClick}
+							onClick={() => closeMenu()}
 							className="news-category-nav-link"
 						>
 							<div className="news-category-nav-link-item">

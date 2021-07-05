@@ -20,3 +20,12 @@ export const removeDuplicates = (arr) => {
 		return acc.includes(item.title) ? acc : [...acc, item];
 	}, []);
 };
+
+export const compareList = (arr, item) => {
+	let inputArray = arr;
+	let itemTitle = item;
+
+	if (inputArray.length > 0 && itemTitle) {
+		return inputArray.some((b) => b.title === itemTitle);
+	}
+};

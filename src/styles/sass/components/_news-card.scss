@@ -26,3 +26,14 @@
 	padding: 0.25rem 0;
 	text-transform: capitalize;
 }
+
+.featured-news {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 0.625rem 1rem;
+	font-size: $font-size-md;
+	font-weight: $font-weight-bold;
+	color: $white;
+	text-transform: uppercase;
+}

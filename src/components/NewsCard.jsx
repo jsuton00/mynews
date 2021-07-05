@@ -11,6 +11,8 @@ const NewsCard = (props) => {
 		newsAuthor,
 		newsImage,
 		selectNews,
+		bookmarkedNews,
+		featured,
 	} = props;
 
 	const newsCardRef = useRef();
@@ -29,10 +31,17 @@ const NewsCard = (props) => {
 				className="news-card-img card-img-top"
 			/>
 			<div className="news-card-body card-body">
+				{featured ? (
+					<p className="featured-news card-text">Featured</p>
+				) : (
+					<> </>
+				)}
 				<button
 					ref={newsCardRef}
 					type="button"
-					className="btn add-to-bookmark-btn"
+					className={`btn add-to-bookmark-btn ${
+						bookmarkedNews || featured ? 'bookmarked' : ''
+					}`}
 					onClick={handleClick}
 					value={newsTitle}
 				>

@@ -5,7 +5,7 @@ export const findImage = (arr) => {
 	let image = '';
 
 	if (imgArray.length > 0) {
-		image = imgArray.find((img) => img.format === 'Normal').url;
+		image = imgArray.find((img) => img.format === 'mediumThreeByTwo210').url;
 	}
 
 	return image ? image : blankImage;

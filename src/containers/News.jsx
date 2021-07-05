@@ -1,19 +1,22 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../store/actions/index';
 import LatestNews from '../components/LatestNews';
 import NewsCard from '../components/NewsCard';
+import { compareList } from '../utils/arrayUtils';
 
 const News = (props) => {
-	const { category, tabKey } = props;
+	const { category } = props;
 
 	const news = useSelector((state) => state.news.filteredNewsByCategory);
 	const selectedNews = useSelector((state) => state.news.selectedNews);
+	const bookmarks = useSelector((state) => state.bookmarks.bookmarks);
 	const dispatch = useDispatch();
 
 	const latestNews =
 		news.length > 0 &&
 		[...news].sort((a, b) => b.published_date - a.published_date);
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			if (category) {
@@ -51,6 +54,7 @@ const News = (props) => {
 							newsAuthor={news.byline}
 							newsImage={news.multimedia}
 							selectNews={() => dispatch(actions.selectNews(news.title))}
+							bookmarkedNews={compareList(bookmarks, news.title)}
 						/>
 					);
 				})}

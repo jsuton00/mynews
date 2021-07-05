@@ -22,7 +22,7 @@ const NavTabs = (props) => {
 				return (
 					<Tab key={index} eventKey={key} title={key} className="nav-tab">
 						{location.pathname === '/' ? (
-							<MobileAllNews tabKey={key} />
+							<MobileAllNews tabKey={key} switchTab={setKey} />
 						) : (
 							<MobileNews tabKey={key} category={category} />
 						)}

@@ -5,10 +5,10 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
 	allNews: [],
 	filteredNews: [],
-	latestAllNews: [],
 	newsByCategory: [],
 	filteredNewsByCategory: [],
-	latestNewsByCategory: [],
+	latestAllNews: [],
+	latestNews: [],
 	category: '',
 	searchTerm: '',
 	selectedNews: '',
@@ -41,6 +41,7 @@ const fetchAllNewsSuccess = (state, action) => {
 	return updateObjects(state, {
 		allNews: allNews,
 		filteredNews: allNews,
+		latestAllNews: allNews.sort((a, b) => b.published_date - a.published_date),
 		loadingNews: false,
 		errorFetchingAllNews: false,
 	});
@@ -54,9 +55,13 @@ const fetchNewsByCategoryFail = (state, action) => {
 };
 
 const fetchNewsByCategorySuccess = (state, action) => {
+	let latestNews =
+		action.news.length > 0 &&
+		action.news.sort((a, b) => b.published_date - a.published_date);
 	return updateObjects(state, {
 		newsByCategory: action.news,
 		filteredNewsByCategory: action.news,
+		latestNews: latestNews,
 		loadingNews: false,
 		errorFetchingNews: false,
 	});

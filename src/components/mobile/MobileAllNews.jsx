@@ -1,14 +1,17 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import FeaturedNews from '../../containers/FeaturedNews';
 import * as actions from '../../store/actions/index';
-import { groupBy } from '../../utils/arrayUtils';
+import { compareList, groupBy } from '../../utils/arrayUtils';
 import LatestNews from '../LatestNews';
 import NewsCard from '../NewsCard';
 
 const MobileAllNews = (props) => {
-	const { tabKey } = props;
+	const { tabKey, switchTab } = props;
+
 	const allNews = useSelector((state) => state.news.filteredNews);
 	const selectedNews = useSelector((state) => state.news.selectedNews);
+	const bookmarks = useSelector((state) => state.bookmarks.bookmarks);
 	const dispatch = useDispatch();
 
 	const latestNews =
@@ -40,9 +43,9 @@ const MobileAllNews = (props) => {
 	const groupArray = groupBy(allNews, 'section');
 	return (
 		<>
-			{' '}
 			{tabKey === 'featured' ? (
 				<Fragment>
+					<FeaturedNews />
 					{groupArray.world?.length > 0 &&
 						groupArray.world.map((news, i) => {
 							return (
@@ -55,6 +58,7 @@ const MobileAllNews = (props) => {
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
+									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
 							);
 						})}
@@ -70,6 +74,7 @@ const MobileAllNews = (props) => {
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
+									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
 							);
 						})}
@@ -85,6 +90,7 @@ const MobileAllNews = (props) => {
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
+									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
 							);
 						})}
@@ -100,6 +106,7 @@ const MobileAllNews = (props) => {
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
+									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
 							);
 						})}
@@ -115,6 +122,7 @@ const MobileAllNews = (props) => {
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
+									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
 							);
 						})}
@@ -130,13 +138,18 @@ const MobileAllNews = (props) => {
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
+									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
 							);
 						})}
 				</Fragment>
 			) : (
 				<div className="latest-news-section">
-					<LatestNews latestNews={latestNews} />
+					<LatestNews
+						latestNews={latestNews}
+						tabKey={tabKey}
+						switchTab={switchTab}
+					/>
 				</div>
 			)}
 		</>

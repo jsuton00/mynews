@@ -153,7 +153,6 @@ a:hover {
   align-items: center;
   width: 100%;
   max-width: 100%;
-  height: 3.5rem;
   padding: 0.25rem 0.5rem;
   margin: 0 auto;
   background-color: #bb1e1e;
@@ -168,7 +167,6 @@ a:hover {
 .pop-up-message-highligted-text {
   font-weight: 500;
   font-size: 1.125rem;
-  text-align: center;
 }
 .pop-up-message-text {
   font-size: 0.925rem;
@@ -176,7 +174,8 @@ a:hover {
 
 .text-section {
   flex-basis: 64%;
-  align-items: baseline;
+  justify-content: flex-start;
+  align-items: center;
 }
 .text-section p {
   flex-grow: 1;
@@ -184,15 +183,24 @@ a:hover {
   color: #fff;
   padding: 0 0.5rem;
 }
+@media (max-width: 582px) {
+  .text-section {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+  }
+}
 
 .add-to-homepage-section {
   flex-basis: 32%;
   padding: 0 1rem;
+  margin: 0 auto;
 }
 .add-to-homepage-section div {
   flex-basis: 40%;
   width: 100%;
   text-align: center;
+  margin: 0 auto;
 }
 
 .search-bar {
@@ -433,6 +441,17 @@ a:hover {
   text-transform: capitalize;
 }
 
+.featured-news {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
 .latest-news {
   background-color: #fff;
   display: flex;
@@ -500,6 +519,12 @@ a:hover {
   align-items: center;
   width: 100%;
   padding: 0.25rem 0.5rem;
+}
+@media (max-width: 829px) {
+  .latest-news {
+    height: 98vh;
+    padding-bottom: 2%;
+  }
 }
 
 .outer-circle {
@@ -569,6 +594,7 @@ a:hover {
   width: 100%;
   max-width: 100%;
   height: 3.5rem;
+  border: none;
 }
 .nav-tabs .nav-item {
   border-radius: 1.5rem;

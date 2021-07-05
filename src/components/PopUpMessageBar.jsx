@@ -1,7 +1,10 @@
 import React from 'react';
+import { useViewportContext } from '../hooks/useViewport';
+import { CloseIcon } from '../utils/iconsImport';
 
 const PopUpMessageBar = (props) => {
 	const { closePopUp } = props;
+	const [width] = useViewportContext();
 	return (
 		<div className="pop-up-message-bar row">
 			<div className="pop-up-message-bar-section text-section">
@@ -24,7 +27,7 @@ const PopUpMessageBar = (props) => {
 						className="btn reject-btn"
 						onClick={() => closePopUp()}
 					>
-						No, thanks
+						{width <= 582 ? <CloseIcon /> : 'No, thanks'}
 					</button>
 				</div>
 			</div>

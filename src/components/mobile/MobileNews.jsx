@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/index';
+import { compareList } from '../../utils/arrayUtils';
 import LatestNews from '../LatestNews';
 import NewsCard from '../NewsCard';
 
@@ -9,6 +10,7 @@ const MobileNews = (props) => {
 
 	const news = useSelector((state) => state.news.filteredNewsByCategory);
 	const selectedNews = useSelector((state) => state.news.selectedNews);
+	const bookmarks = useSelector((state) => state.bookmarks.bookmarks);
 	const dispatch = useDispatch();
 
 	const latestNews =
@@ -54,6 +56,7 @@ const MobileNews = (props) => {
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
+									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
 							);
 						})}
