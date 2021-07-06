@@ -1,5 +1,7 @@
 .latest-news {
+	border: 0.0625rem solid $white;
 	background-color: $white;
+	border-radius: 0.625rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
