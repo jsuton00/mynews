@@ -57,6 +57,7 @@ const MobileAllNews = (props) => {
 									newsSubCategory={news.subsection}
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
+									newsUrl={news.url}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
 									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
@@ -73,6 +74,7 @@ const MobileAllNews = (props) => {
 									newsSubCategory={news.subsection}
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
+									newsUrl={news.url}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
 									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
@@ -89,6 +91,7 @@ const MobileAllNews = (props) => {
 									newsSubCategory={news.subsection}
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
+									newsUrl={news.url}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
 									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
@@ -105,6 +108,7 @@ const MobileAllNews = (props) => {
 									newsSubCategory={news.subsection}
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
+									newsUrl={news.url}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
 									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
@@ -121,6 +125,7 @@ const MobileAllNews = (props) => {
 									newsSubCategory={news.subsection}
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
+									newsUrl={news.url}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
 									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>
@@ -137,6 +142,7 @@ const MobileAllNews = (props) => {
 									newsSubCategory={news.subsection}
 									newsAuthor={news.byline}
 									newsImage={news.multimedia}
+									newsUrl={news.url}
 									selectNews={() => dispatch(actions.selectNews(news.title))}
 									bookmarkedNews={compareList(bookmarks, news.title)}
 								/>

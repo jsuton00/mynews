@@ -20,6 +20,7 @@ const FeaturedNews = () => {
 							newsSubCategory={bookmark.subsection}
 							newsAuthor={bookmark.byline}
 							newsImage={bookmark.multimedia}
+							newsUrl={bookmark.url}
 							featured={compareList(allNews, bookmark.title)}
 						/>
 					);
