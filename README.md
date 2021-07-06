@@ -37,3 +37,7 @@ In the top right corner of the card, there is a blue bookmark icon. By clicking 
 3. Use the navigation menu to navigate between the home page and different news categories to find relevant news.
 4. Use the search input field on top of the main interface to search and filter through all of the news by their title
 5. Click a card to select a news article and bookmark it. The bookmarked news article will be shown on the home page as featured and stored in the app's local storage.
+
+### Live Version
+
+- Vercel: https://mynews-lemon.vercel.app/
